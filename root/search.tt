@@ -1,0 +1,11 @@
+[% WRAPPER page.tt title = c.config.name; END %]
+<h2>Search Clothes</h2>
+<table>
+    <tr><th>ClothingID</th><th>Name</th></tr>
+    [% WHILE (clothing = clothing_rs.next) %]
+        <tr>
+            <td>[% clothing.id %]</td>
+            <td>[% clothing.name %]</td>
+        </tr>
+    [% END %]
+    

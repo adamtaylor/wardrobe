@@ -9,6 +9,12 @@
 <body>
     <h1>Wardrobe Management Application</h1>
     <p><a href="/">Home</a> | <a href="/view">View Clothes</a>
+    <h2>Search</h2>
+    <form name="search" method=POST action="search">
+        <input type="text" name="search" value="search" />
+        <input type="submit" name="submit" value="search" />
+    </form>
+    
     [% content %]
 </body>
 </html>
