@@ -25,9 +25,9 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key("outfit_id", "clothing_id");
 __PACKAGE__->belongs_to(
-  "outfit_id",
+  "outfits",
   "Wardrobe::Schema::Result::Outfits",
-  { id => "outfit_id" },
+  { "forieng.id" => "self.outfit_id" },
 );
 __PACKAGE__->belongs_to(
   "clothing",
