@@ -30,6 +30,16 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 }
 
+=head2 upload
+
+Method for handling CSV file upload.
+
+=cut
+
+sub upload :Local {
+    my ( $self, $c ) = @_;
+}
+
 sub default :Path {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
