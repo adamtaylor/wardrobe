@@ -6,6 +6,12 @@
         <tr>
             <td>[% clothing.id %]</td>
             <td>[% clothing.name %]</td>
-            <td>[% clothing.category.name %]</td>
+            <td>
+                <ul>
+                [% FOREACH category = clothes.category_clothes %]
+                    <li>[% category.category_id.name %]</li>
+                [% END %]
+                </ul>
+            </td>
     [% END %]
 </table>
