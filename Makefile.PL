@@ -16,6 +16,7 @@ requires 'Config::General'; # This should reflect the config file format you've 
                  
 requires 'Catalyst::View::TT';
 requires 'Catalyst::Plugin::Unicode';
+requires 'Catalyst::Request::Upload';
 
 catalyst;
 
