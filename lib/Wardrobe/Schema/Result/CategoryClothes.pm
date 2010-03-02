@@ -25,14 +25,14 @@ __PACKAGE__->add_columns(
 );
 __PACKAGE__->set_primary_key("category_id", "clothing_id");
 __PACKAGE__->belongs_to(
-  "category_id",
+  "categories",
   "Wardrobe::Schema::Result::Categories",
-  { id => "category_id" },
+  { "foreign.id" => "self.category_id" },
 );
 __PACKAGE__->belongs_to(
-  "clothing_id",
+  "clothing",
   "Wardrobe::Schema::Result::Clothes",
-  { id => "clothing_id" },
+  { "foreign.id" => "self.clothing_id" },
 );
 
 
