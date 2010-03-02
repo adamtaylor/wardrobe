@@ -27,7 +27,7 @@ __PACKAGE__->set_primary_key("outfit_id", "clothing_id");
 __PACKAGE__->belongs_to(
   "outfits",
   "Wardrobe::Schema::Result::Outfits",
-  { "forieng.id" => "self.outfit_id" },
+  { "foreign.id" => "self.outfit_id" },
 );
 __PACKAGE__->belongs_to(
   "clothing",
