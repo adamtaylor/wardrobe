@@ -52,7 +52,15 @@ sub upload :Local {
     $csv->eof or $csv->error_diag ();
     close $fh;
     
-    die Dumper @rows;
+    my $category_rs = $c->model('WardrobeDB::Categories');
+    my $clothes_rs = $c->model('WardrobeDB::Clothes');
+    
+    foreach my $row (@rows) {
+        my $category = $category_rs->create( { name =>  $row[0] } )
+        my $clothing = $clothes_rs->create( { name =>  $row[1] } )
+    }
+    
+    $c->stash( template => 'index.tt' );
 }
 
 sub default :Path {
