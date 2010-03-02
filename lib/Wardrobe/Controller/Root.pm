@@ -28,9 +28,6 @@ Wardrobe::Controller::Root - Root Controller for Wardrobe
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-
-    # Hello World
-    $c->response->body( $c->welcome_message );
 }
 
 sub default :Path {
