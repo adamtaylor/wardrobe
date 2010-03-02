@@ -1,15 +1,15 @@
 [% WRAPPER page.tt title = c.config.name; END %]
 <h2>All Clothes</h2>
 <table>
-    <tr><th>ClothingID</th><th>Name</th><th>Category</th></tr>
-    [% WHILE (clothing = clothes_rs.next) %]
+    <tr><th>CategoryID</th><th>Name</th><th>Clothes</th></tr>
+    [% WHILE (category = category_rs.next) %]
         <tr>
-            <td>[% clothing.id %]</td>
-            <td>[% clothing.name %]</td>
+            <td>[% category.id %]</td>
+            <td>[% category.name %]</td>
             <td>
                 <ul>
-                [% FOREACH category = clothes.category_clothes %]
-                    <li>[% category.category_id.name %]</li>
+                [% FOREACH clothes = category.clothes %]
+                    <li>[% clothes.name %]</li>
                 [% END %]
                 </ul>
             </td>
