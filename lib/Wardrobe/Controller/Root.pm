@@ -3,6 +3,8 @@ package Wardrobe::Controller::Root;
 use strict;
 use warnings;
 use parent 'Catalyst::Controller';
+use Data::Dumper;
+use Text::CSV_XS;
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -38,6 +40,19 @@ Method for handling CSV file upload.
 
 sub upload :Local {
     my ( $self, $c ) = @_;
+    my $upload = $c->req->upload('file');
+    
+    my @rows;
+    my $csv = Text::CSV_XS->new ({ binary => 1 }) or
+        die "Cannot use CSV: ".Text::CSV->error_diag ();
+    open my $fh, "<:encoding(utf8)", $upload->tempname or die "$upload->tempname: $!";
+    while (my $row = $csv->getline ($fh)) {
+        push @rows, $row;
+    }
+    $csv->eof or $csv->error_diag ();
+    close $fh;
+    
+    die Dumper @rows;
 }
 
 sub default :Path {
