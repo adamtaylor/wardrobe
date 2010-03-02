@@ -1,4 +1,5 @@
 [% WRAPPER page.tt title = c.config.name; END %]
+<h2>Upload Clothes</h2>
 <form name="upload_clothes" method=POST action="upload_clothes" enctype="multipart/form-data">
     <input type="file" name="file" />
     <input type="submit" value="Upload Clothes">
