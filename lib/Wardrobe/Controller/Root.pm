@@ -57,11 +57,11 @@ sub upload :Local {
     
     foreach my $row (@rows) {
         ## todo -> that doesn't work
-        unless ($_ == 0) {
+        # unless ($_ == 0) {
             my $category = $category_rs->create( { name =>  $row->[1] } );
             my $clothing = $clothes_rs->create( { name =>  $row->[0] } );
-            $clothing->add_to_category( 'id', $clothing->id );
-        }
+            $category->category_clothes->create( { 'clothing_id', $clothing->id } );
+        # }
     }
     
     $c->stash( template => 'index.tt' );
