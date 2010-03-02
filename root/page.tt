@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Wardrobe Management Application</h1>
+    <p><a href="/">Home</a> | <a href="/view">View Clothes</a>
     [% content %]
 </body>
 </html>
