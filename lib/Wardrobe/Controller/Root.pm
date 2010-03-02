@@ -56,8 +56,12 @@ sub upload :Local {
     my $clothes_rs = $c->model('WardrobeDB::Clothes');
     
     foreach my $row (@rows) {
-        my $category = $category_rs->create( { name =>  $row[0] } )
-        my $clothing = $clothes_rs->create( { name =>  $row[1] } )
+        ## todo -> that doesn't work
+        unless ($_ == 0) {
+            my $category = $category_rs->create( { name =>  $row->[1] } );
+            my $clothing = $clothes_rs->create( { name =>  $row->[0] } );
+            $clothing->add_to_category( 'id', $clothing->id );
+        }
     }
     
     $c->stash( template => 'index.tt' );
