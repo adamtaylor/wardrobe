@@ -30,9 +30,9 @@ __PACKAGE__->belongs_to(
   { id => "outfit_id" },
 );
 __PACKAGE__->belongs_to(
-  "clothing_id",
+  "clothing",
   "Wardrobe::Schema::Result::Clothes",
-  { id => "clothing_id" },
+  { "foreign.id" => "self.clothing_id" },
 );
 
 
