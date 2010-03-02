@@ -56,15 +56,48 @@ sub upload :Local {
     my $clothes_rs = $c->model('WardrobeDB::Clothes');
     
     foreach my $row (@rows) {
-        ## todo -> that doesn't work
-        # unless ($_ == 0) {
-            my $category = $category_rs->create( { name =>  $row->[1] } );
+        #if ($_ != 0) {
             my $clothing = $clothes_rs->create( { name =>  $row->[0] } );
+            
+            #my $category = $category_rs->check_and_create( $row->[1] );
+            
+            ## this should really be in a model
+            my @categories = $category_rs->search({ name => $row->[1] });
+
+            my $size = scalar @categories;
+
+            my $category;
+            if ($size >= 1) {
+                $category = $categories[0];
+            } else {
+                $category = $category_rs->create( { name =>  $row->[1] } );
+            }
+            
             $category->category_clothes->create( { 'clothing_id', $clothing->id } );
-        # }
+        #}
     }
     
     $c->stash( template => 'index.tt' );
+}
+
+sub view :Local {
+    my ( $self, $c ) = @_;
+    
+    my $category_rs = $c->model('WardrobeDB::Categories');
+    
+    $c->stash( category_rs => $category_rs );
+}
+
+sub search :Local {
+    my ( $self, $c ) = @_;
+    
+    my $query = $c->req->params->{search};
+    
+    my $clothing_rs = $c->model('WardrobeDB::Clothes');
+    
+    my $clothes_rs = $clothing_rs->search({ name => { like => '%'.$query.'%' } });
+      
+    $c->stash( clothing_rs => $clothes_rs );
 }
 
 sub default :Path {
