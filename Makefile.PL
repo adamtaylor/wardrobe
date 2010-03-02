@@ -18,6 +18,8 @@ requires 'Catalyst::View::TT';
 requires 'Catalyst::Plugin::Unicode';
 requires 'Catalyst::Request::Upload';
 requires 'Text::CSV_XS';
+requires 'Catalyst::Helper::Model::DBIC::Schema';
+requires 'DBD::SQLite';
 
 catalyst;
 
