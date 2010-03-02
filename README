@@ -12,5 +12,7 @@ I probably also should not have used the Root controller so heavily.
 
 I also didn't manage to find time to add the outfit functionality :(!
 
+Oh and _nothing_ is validated, which obviously it should be.
+
 Thanks,
 Adam
